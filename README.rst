@@ -36,7 +36,7 @@ SelfiesPredict
     Reaction outcome prediction using SELFIES
 
 
-A longer description of your project goes here...
+Reaction outcome prediction has been done with these models, using SMILES
 
 
 
