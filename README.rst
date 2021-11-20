@@ -29,11 +29,11 @@
 |
 
 ==============
-selfiespredict
+SelfiesPredict
 ==============
 
 
-    Add a short description here!
+    Reaction outcome prediction using SELFIES
 
 
 A longer description of your project goes here...
