@@ -22,28 +22,40 @@
     .. image:: https://img.shields.io/twitter/url/http/shields.io.svg?style=social&label=Twitter
         :alt: Twitter
         :target: https://twitter.com/selfiespredict
-
-.. image:: https://img.shields.io/badge/-PyScaffold-005CA0?logo=pyscaffold
-    :alt: Project generated with PyScaffold
-    :target: https://pyscaffold.org/
+      .. image:: https://img.shields.io/badge/-PyScaffold-005CA0?logo=pyscaffold
+          :alt: Project generated with PyScaffold
+          :target: https://pyscaffold.org/
 
 |
 
 ==============
-selfiespredict
+SelfiesPredict
 ==============
 
 
-    Add a short description here!
+    Reaction outcome prediction using SELFIES
 
 
-A longer description of your project goes here...
+Reaction outcome prediction has been done with these models, using SMILES
 
+
+
+
+Install notes
+=============
+* The code can be installed by first cloning the repository and then running pip locally::
+
+     git clone <link>
+     cd <./cloned_repository>
+     pip install -e .
+     
 
 .. _pyscaffold-notes:
 
-Note
+Tests
 ====
+* To run test, run in the directory::
 
-This project has been set up using PyScaffold 4.1.1. For details and usage
-information on PyScaffold see https://pyscaffold.org/.
+   python -m unittest
+
+
