@@ -54,4 +54,8 @@ Install notes
 
 Tests
 ====
+* To run test, run in the directory::
+
+   python -m unittest
+
 
