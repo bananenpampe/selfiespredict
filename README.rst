@@ -22,10 +22,9 @@
     .. image:: https://img.shields.io/twitter/url/http/shields.io.svg?style=social&label=Twitter
         :alt: Twitter
         :target: https://twitter.com/selfiespredict
-
-.. image:: https://img.shields.io/badge/-PyScaffold-005CA0?logo=pyscaffold
-    :alt: Project generated with PyScaffold
-    :target: https://pyscaffold.org/
+      .. image:: https://img.shields.io/badge/-PyScaffold-005CA0?logo=pyscaffold
+          :alt: Project generated with PyScaffold
+          :target: https://pyscaffold.org/
 
 |
 
