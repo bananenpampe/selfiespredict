@@ -39,6 +39,18 @@ SelfiesPredict
 A longer description of your project goes here...
 
 
+
+
+Install notes
+=============
+
+The code can be installed by first cloning the repository:
+``git clone <link>``
+And then installed via:
+``cd <./cloned_repository>``
+and
+``pip install -e .``
+   
 .. _pyscaffold-notes:
 
 Note
