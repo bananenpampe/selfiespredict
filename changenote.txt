@@ -1,0 +1,1 @@
+changed in setup.cfg > testdirectory from tests to test
