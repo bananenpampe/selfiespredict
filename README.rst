@@ -43,19 +43,13 @@ A longer description of your project goes here...
 
 Install notes
 =============
+* The code can be installed by first cloning the repository and then running pip locally::
 
-| The code can be installed by first cloning the repository:
+     git clone <link>
+     cd <./cloned_repository>
+     pip install -e .
+     
 
-| ``git clone <link>``
-
-| And then installed via:
-
-| ``cd <./cloned_repository>``
-
-| and
-
-| ``pip install -e .``
-   
 .. _pyscaffold-notes:
 
 Note
