@@ -52,8 +52,6 @@ Install notes
 
 .. _pyscaffold-notes:
 
-Note
+Tests
 ====
 
-This project has been set up using PyScaffold 4.1.1. For details and usage
-information on PyScaffold see https://pyscaffold.org/.
