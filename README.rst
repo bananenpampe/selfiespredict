@@ -62,7 +62,6 @@ Install notes
      #make sure to uninstall the not-working pypi wheel
      pip uninstall rdkit-pypi
      conda install -c rdkit rdkit
-*     
 
 * And then install into the environment::
      pip install -e .         
