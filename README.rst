@@ -64,6 +64,7 @@ Install notes
      conda install -c rdkit rdkit
 
 * And then install into the environment::
+        
         pip install -e .         
   
   
