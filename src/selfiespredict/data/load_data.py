@@ -1,5 +1,14 @@
 import selfies as sf
 from selfiespredict.helpers.Helper_functions import smi_tokenizer
+from rdkit.Chem import CanonSmiles
+from rdkit import Chem
+
+def return_canonical(smiles):
+    m = Chem.MolFromSmiles(smiles)
+    m.UpdatePropertyCache(strict=False)
+    Chem.SanitizeMol(m,Chem.SanitizeFlags.SANITIZE_FINDRADICALS|Chem.SanitizeFlags.SANITIZE_KEKULIZE|Chem.SanitizeFlags.SANITIZE_SETAROMATICITY|Chem.SanitizeFlags.SANITIZE_SETCONJUGATION|Chem.SanitizeFlags.SANITIZE_SETHYBRIDIZATION|Chem.SanitizeFlags.SANITIZE_SYMMRINGS,catchErrors=True)
+    return Chem.MolToSmiles(Chem.MolFromSmiles(smiles))
+
 
 class Data_Cleaner:
     """ Class for data preparation 'change made in colab2'
@@ -17,7 +26,7 @@ class Data_Cleaner:
             for line in data_file:
               stripped_line = line.strip()
               line_list = stripped_line.replace(" ", "")
-              list_of_lists.append(line_list)
+              list_of_lists.append(CanonSmiles(line_list))
 
         self.raw_data = list_of_lists
 
@@ -26,7 +35,7 @@ class Data_Cleaner:
         self.DATAPATH = DATAPATH
         self.raw_data = None
         self.data = None
-        sf.set_semantic_constraints("hypervalent")
+
 
         if self.DATAPATH:
             self._load_data(self.DATAPATH)
@@ -35,7 +44,7 @@ class Data_Cleaner:
         """
         Function that converts list entries to SMILE format
         """
-        self.data = [smi_tokenizer(item) for item in self.raw_data]
+        self.data = [smi_tokenizer(return_canonical(item)) for item in self.raw_data]
 
     def data2selfie(self):
         """
@@ -47,10 +56,12 @@ class Data_Cleaner:
         """
         Function that converts SMILE list entries to SELFIE format
         """
+        sf.set_semantic_constraints("hypervalent")
         self.data = [sf.encoder(item.replace(" ", ""),strict=False) for item in self.data]
 
     def selfie2smile(self):
         """
         Function that converts SELFIE list entries to SMILE format
         """
-        self.data = [smi_tokenizer(sf.decoder(item)) for item in self.data]
+        sf.set_semantic_constraints("hypervalent")
+        self.data = [smi_tokenizer(return_canonical(sf.decoder(item))) for item in self.data]
