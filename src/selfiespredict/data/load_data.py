@@ -1,5 +1,5 @@
 import selfies as sf
-from selfiespredict.helpers.Helper_functions import smi_tokenizer    
+from selfiespredict.helpers.Helper_functions import smi_tokenizer
 
 class Data_Cleaner:
     """ Class for data preparation 'change made in colab2'
@@ -12,13 +12,12 @@ class Data_Cleaner:
         """
         Function that loads the dataset in .txt format from DATAPATH
         """
-        data_file = open(DATAPATH, 'r')
-
-        list_of_lists = []
-        for line in data_file:
-          stripped_line = line.strip()
-          line_list = stripped_line.replace(" ", "")
-          list_of_lists.append(line_list)
+        with open(DATAPATH, 'r') as data_file:
+            list_of_lists = []
+            for line in data_file:
+              stripped_line = line.strip()
+              line_list = stripped_line.replace(" ", "")
+              list_of_lists.append(line_list)
 
         self.raw_data = list_of_lists
 

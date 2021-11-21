@@ -1,1 +1,2 @@
-changed in setup.cfg > testdirectory from tests to test
+can we store data as tuple (data, "string repr type")
+instead of raw, data
