@@ -40,7 +40,8 @@ class Data_Cleaner:
             constraints['P-1'] = 7
             constraints['P'] = 6
             constraints['P+1'] = 5
-            constraints['?'] = 10
+            #14-18 should be max for organometallic transition metal complexes
+            constraints['?'] = 18
             sf.set_semantic_constraints(constraints)
         else:
             sf.set_semantic_constraints(selfies_constraints)

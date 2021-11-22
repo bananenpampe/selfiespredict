@@ -20,7 +20,23 @@ class TestDataClass(unittest.TestCase):
         """Tests, if all data can be converted from tokenized smiles ->
         smiles_tokenized -> selfies ->
          """
-        print(join(BASEPATH,DATAPATH,sets[0],files[0]))
+        for dataset in sets:
+            for datafile in files:
+
+                PATH = join(BASEPATH,DATAPATH,dataset,datafile)
+                print("looking at {}".format(PATH))
+                cleaner = Data_Cleaner(PATH)
+                cleaner.data2smile()
+                this = deepcopy(cleaner.data)
+                cleaner.smile2selfie()
+                cleaner.selfie2smile()
+                for n, repr1 in enumerate(zip(this,cleaner.data)):
+                    if repr1[0] != repr1[1]:
+                        print("In {} wrong: {}".format(PATH,n))
+                    else:
+                        continue
+                self.assertTrue(all([repr1[0] == repr1[1] for repr1 in zip(this,cleaner.data)]))
+
 
         """cleaner = Data_Cleaner("../data/USPTO_STEREO/src-test.txt")
         cleaner.data2smile()
