@@ -56,12 +56,12 @@ class Data_Cleaner:
         """
         Function that converts SMILE list entries to SELFIE format
         """
-        sf.set_semantic_constraints("hypervalent")
+
         self.data = [sf.encoder(item.replace(" ", ""),strict=False) for item in self.data]
 
     def selfie2smile(self):
         """
         Function that converts SELFIE list entries to SMILE format
         """
-        sf.set_semantic_constraints("hypervalent")
+
         self.data = [smi_tokenizer(return_canonical(sf.decoder(item))) for item in self.data]
