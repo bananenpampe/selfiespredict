@@ -11,7 +11,7 @@ RDLogger.DisableLog('rdApp.*')
 
 #This is bad. replace with absolut
 BASEPATH = dirname(dirname(abspath(__file__)))
-DATAPATH = "data"
+DATAPATH = "data/raw_data"
 sets = ["USPTO_480K","USPTO_STEREO"]
 files = ["src-test.txt","src-val.txt","tgt-test.txt","tgt-train.txt","tgt-val.txt"]
 
