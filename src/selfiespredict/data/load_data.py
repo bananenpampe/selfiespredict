@@ -30,8 +30,20 @@ class Data_Cleaner:
 
         self.raw_data = list_of_lists
 
-    def __init__(self, DATAPATH=None):
+    def __init__(self, DATAPATH=None, selfies_constraints=None):
 
+        #adding selfies hypervalence constraints:
+
+        if selfies_constraints is not None:
+            sf.set_semantic_constraints("hypervalent")
+            constraints = sf.get_semantic_constraints()
+            constraints['P-1'] = 7
+            constraints['P'] = 6
+            constraints['P+1'] = 5
+            sf.set_semantic_constraints(constraints)
+        else:
+            sf.set_semantic_constraints(selfies_constraints)
+            
         self.DATAPATH = DATAPATH
         self.raw_data = None
         self.data = None
