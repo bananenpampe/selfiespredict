@@ -34,16 +34,17 @@ class Data_Cleaner:
 
         #adding selfies hypervalence constraints:
 
-        if selfies_constraints is not None:
+        if selfies_constraints is None:
             sf.set_semantic_constraints("hypervalent")
             constraints = sf.get_semantic_constraints()
             constraints['P-1'] = 7
             constraints['P'] = 6
             constraints['P+1'] = 5
+            constraints['?'] = 10
             sf.set_semantic_constraints(constraints)
         else:
             sf.set_semantic_constraints(selfies_constraints)
-            
+
         self.DATAPATH = DATAPATH
         self.raw_data = None
         self.data = None

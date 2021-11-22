@@ -1,0 +1,2 @@
+C 1 2 C 3 C 4 C 5 C 1 [Fe] 2 3 4 5 1 6 7 8 C 2 C 1 C 6 C 7 C 2 8 . C S ( C ) = O . C n 1 c ( = O ) c 2 c ( n c n 2 C ) n ( C ) c 1 = O . F C ( F ) ( F ) I . O = S ( = O ) ( O ) O . O = S ( = O ) ( [O-] ) [O-] . O O . [Fe+2]
+C C ( C ) ( O ) C 1 C C N C C 1 . C C N ( C ( C ) C ) C ( C ) C . C N ( C ) C ( O n 1 n n c 2 c c c n c 2 1 ) = [N+] ( C ) C . Cl C Cl . C n 1 c ( C ( = O ) O ) n c 2 c ( N 3 C C O C C 3 ) n c ( - n 3 c ( C 4 C C 4 ) n c 4 c c c c c 4 3 ) n c 2 1 . F [P-] ( F ) ( F ) ( F ) ( F ) F
