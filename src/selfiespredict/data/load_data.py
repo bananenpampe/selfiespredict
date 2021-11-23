@@ -1,4 +1,5 @@
 import selfies as sf
+import selfiespredict
 from selfiespredict.helpers.Helper_functions import smi_tokenizer
 from rdkit.Chem import CanonSmiles
 from rdkit import Chem
@@ -57,10 +58,10 @@ class Data_Cleaner:
 
         if self.DATAPATH:
             self._load_data(self.DATAPATH)
-    
+
     def import_data(self,name):
         "Loads USPTO Stereo and USPTO480k into datafile as tokenized smiles from source"
-    
+
         urls_fns_dict = {
         "USPTO_480k": [
             ("https://drive.google.com/uc?id=1RysNBvB2rsMP0Ap9XXi02XiiZkEXCrA8", "src-train.txt"),
@@ -79,8 +80,9 @@ class Data_Cleaner:
             ("https://drive.google.com/uc?id=1rVWvbmoVC90jyGml_t-r3NhaoWVVSKLe", "tgt-test.txt")
         ]
         }
-    
-        data_path = os.path.join("./data/raw_data", name)
+
+        BASEPATH = os.path.abspath(selfiespredict.__file__)
+        data_path = os.path.join(BASEPATH,"data", "raw_data", name)
 
         os.makedirs(data_path, exist_ok=True)
 
@@ -91,17 +93,17 @@ class Data_Cleaner:
                 assert os.path.exists(ofn)
             else:
                 print(f"{ofn} exists, skip downloading")
-    
+
     def gen_txt(self,name):
         """
         Function generates txt file of tokenized SMILES and SELFIES for train/test/val
-        """ 
+        """
         #generate tokenized selfies
         data_path = os.path.join("./data/tokenized_data/SELFIE", name)
-        os.makedirs(data_path, exist_ok=True)        
+        os.makedirs(data_path, exist_ok=True)
         raw_data_path = os.path.join("./data/raw_data", name)
         text_files = [f for f in os.listdir(raw_data_path) if f.endswith('.txt')]
-        for file in text_files: 
+        for file in text_files:
             data_file = os.path.join(raw_data_path, file)
             self._load_data(data_file)
             self.data2selfie()
@@ -110,13 +112,13 @@ class Data_Cleaner:
             with open(output_file, "w") as output:
                  for line in self.data:
                     output.write('%s\n' % line)
-        
+
         #generate tokenized smiles
         data_path = os.path.join("./data/tokenized_data/SMILES", name)
         os.makedirs(data_path, exist_ok=True)
         raw_data_path = os.path.join("./data/raw_data", name)
         text_files = [f for f in os.listdir(raw_data_path) if f.endswith('.txt')]
-        for file in text_files: 
+        for file in text_files:
             data_file = os.path.join(raw_data_path, file)
             self._load_data(data_file)
             self.data2smile()
@@ -124,7 +126,7 @@ class Data_Cleaner:
             with open(output_file, "w") as output:
                  for line in self.data:
                     output.write('%s\n' % line)
-              
+
     def data2smile(self):
         """
         Function that converts list entries to SMILE format
@@ -158,13 +160,11 @@ class Data_Cleaner:
             self.data_state = "SMILE"
         else:
             print("Data in wrong state")
-        
+
     def tokenize_selfie(self):
-        
+
         if self.data_state == "SELFIE":
             self.data = [' '.join(list(sf.split_selfies(item))).replace("[", "").replace("]", "") for item in self.data]
             self.data_state = "tokenized SELFIE"
         else:
             print("Data in wrong state")
-        
-        
