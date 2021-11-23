@@ -11,11 +11,11 @@ overwrite: False
 # Corpus opts:
 data:
     corpus_1:
-        path_src: ../../data/tokenized_data/SELFIE/USPTO_480K/src-train.txt
-        path_tgt: ../../data/tokenized_data/SELFIE/USPTO_480K/tgt-train.txt
+        path_src: ../../data/tokenized_data/SELFIE/USPTO_480k/src-train.txt
+        path_tgt: ../../data/tokenized_data/SELFIE/USPTO_480k/tgt-train.txt
     valid:
-        path_src: ../../data/tokenized_data/SELFIE/USPTO_480K/src-val.txt
-        path_tgt: ../../data/tokenized_data/SELFIE/USPTO_480K/tgt-val.txt
+        path_src: ../../data/tokenized_data/SELFIE/USPTO_480k/src-val.txt
+        path_tgt: ../../data/tokenized_data/SELFIE/USPTO_480k/tgt-val.txt
 
 world_size: 1
 gpu_ranks: [0]
