@@ -17,6 +17,9 @@ data:
         path_src: ../../data/tokenized_data/SELFIE/USPTO_480K/src-val.txt
         path_tgt: ../../data/tokenized_data/SELFIE/USPTO_480K/tgt-val.txt
 
+world_size: 1
+gpu_ranks: [0]
+
 save_model: ./run/model
 save_checkpoint_steps: 500
 train_steps: 1000
