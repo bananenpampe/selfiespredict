@@ -4,7 +4,7 @@
 save_data: ./run/example
 ## Where the vocab(s) will be written, should point to same in shared embeddings
 src_vocab: ./run/example.vocab.src
-tgt_vocab: ./run/example.vocab.tgt
+tgt_vocab: ./run/example.vocab.src
 # Prevent overwriting existing files in the folder
 overwrite: False
 
