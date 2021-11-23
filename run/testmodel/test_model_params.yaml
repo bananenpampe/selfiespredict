@@ -6,8 +6,8 @@ save_data: ./run/example
 src_vocab: ./run/example.vocab.src
 tgt_vocab: ./run/example.vocab.src
 # Prevent overwriting existing files in the folder
-overwrite: False
-
+overwrite: true
+share_vocab: true
 # Corpus opts:
 data:
     corpus_1:
@@ -19,6 +19,7 @@ data:
 
 world_size: 1
 gpu_ranks: [0]
+
 
 save_model: ./run/model
 save_checkpoint_steps: 5000
