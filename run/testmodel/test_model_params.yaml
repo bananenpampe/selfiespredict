@@ -29,10 +29,10 @@ seed: 42
 # Model and optimization parameters.
 #param_init 0 depreceated? why dontknow
 #check out https://opennmt.net/OpenNMT-tf/v2_transition.html?highlight=param_init
-train:
-  batch_type: tokens
-#accum_count: 4
-#normalization: tokens
+
+batch_type: tokens
+accum_count: 4
+normalization: tokens
 
 params:
   optimizer: Adam
