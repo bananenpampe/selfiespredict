@@ -81,7 +81,7 @@ class Data_Cleaner:
         ]
         }
 
-        BASEPATH = os.path.abspath(selfiespredict.__file__)
+        BASEPATH = os.path.dirname(os.path.dirname(os.path.dirname(selfiespredict.__file__)))
         data_path = os.path.join(BASEPATH,"data", "raw_data", name)
 
         os.makedirs(data_path, exist_ok=True)
