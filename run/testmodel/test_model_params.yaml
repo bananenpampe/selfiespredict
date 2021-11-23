@@ -30,7 +30,6 @@ seed: 42
 #param_init 0 depreceated? why dontknow
 #check out https://opennmt.net/OpenNMT-tf/v2_transition.html?highlight=param_init
 train:
-  batch_size: 4096
   batch_type: tokens
   normalization: tokens
   accum_count: 4
