@@ -31,7 +31,7 @@ seed: 42
 #check out https://opennmt.net/OpenNMT-tf/v2_transition.html?highlight=param_init
 train:
   batch_type: tokens
-  accum_count: 4
+#accum_count: 4
 #normalization: tokens
 
 params:
