@@ -1,0 +1,18 @@
+# test_model_params.yaml
+
+## Where the samples will be written
+save_data: ./run/example
+## Where the vocab(s) will be written
+src_vocab: .run/example.vocab.src
+tgt_vocab: ./run/example.vocab.tgt
+# Prevent overwriting existing files in the folder
+overwrite: False
+
+# Corpus opts:
+data:
+    corpus_1:
+        path_src: ../../data/tokenized_data/SELFIE/USPTO_480K/src-train.txt
+        path_tgt: ../../data/tokenized_data/SELFIE/USPTO_480K/tgt-train.txt
+    valid:
+        path_src: ../../data/tokenized_data/SELFIE/USPTO_480K/src-val.txt
+        path_tgt: ../../data/tokenized_data/SELFIE/USPTO_480K/tgt-val.txt

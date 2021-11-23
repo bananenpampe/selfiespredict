@@ -99,7 +99,8 @@ class Data_Cleaner:
         Function generates txt file of tokenized SMILES and SELFIES for train/test/val
         """
         #generate tokenized selfies
-        data_path = os.path.join("./data/tokenized_data/SELFIE", name)
+        BASEPATH = os.path.dirname(os.path.dirname(os.path.dirname(selfiespredict.__file__)))
+        data_path = os.path.join(BAEPATH,"data/tokenized_data/SELFIE", name)
         os.makedirs(data_path, exist_ok=True)
         raw_data_path = os.path.join("./data/raw_data", name)
         text_files = [f for f in os.listdir(raw_data_path) if f.endswith('.txt')]
@@ -131,7 +132,7 @@ class Data_Cleaner:
         """
         Function that converts list entries to SMILE format
         """
-        self.data = [smi_tokenizer(return_canonical(item)) for item in self.raw_data]
+        self.data = [smi_tokenizer(CanonSmiles(item)) for item in self.raw_data]
         self.data_state = "tokenized SMILE"
 
     def data2selfie(self):
@@ -156,7 +157,7 @@ class Data_Cleaner:
         Function that converts SELFIE list entries to SMILE format
         """
         if self.data_state == "SELFIE":
-            self.data = [smi_tokenizer(return_canonical(sf.decoder(item))) for item in self.data]
+            self.data = [smi_tokenizer(CanonSmiles(sf.decoder(item))) for item in self.data]
             self.data_state = "SMILE"
         else:
             print("Data in wrong state")
