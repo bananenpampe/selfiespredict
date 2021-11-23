@@ -51,6 +51,7 @@ params:
     warmup_steps: 8000
   label_smoothing: 0.0
 
+
 word_vec_size: 384
 rnn_size: 384
 max_generator_batches: 32
