@@ -21,6 +21,49 @@ world_size: 1
 gpu_ranks: [0]
 
 save_model: ./run/model
-save_checkpoint_steps: 500
-train_steps: 1000
-valid_steps: 500
+save_checkpoint_steps: 5000
+train_steps: 250000
+valid_steps: 5000
+seed: 42
+
+# Model and optimization parameters.
+#param_init 0 depreceated? why dontknow
+#check out https://opennmt.net/OpenNMT-tf/v2_transition.html?highlight=param_init
+train:
+  batch_size: 4096
+  batch_type: tokens
+  normalization: tokens
+  accum_count: 4
+
+
+params:
+  optimizer: Adam
+  optimizer_params:
+    beta_1: 0.9
+    beta_2: 0.998
+  learning_rate: 2.0
+  param_init: 0
+  max_grad_norm: 0
+  dropout: 0.1
+  label_smoothing: 0.1
+  # (optional unless decay_type is set) Decay parameters.
+  decay_type: NoamDecay
+  decay_params:
+    warmup_steps: 8000
+  label_smoothing: 0.0
+
+word_vec_size: 384
+rnn_size: 384
+max_generator_batches: 32
+share_embeddings: true
+position_encoding: true
+self_attn_type: scaled-dot
+heads: 8
+transformer_ff: 2048
+rnn_size:  384
+word_vec_size: 384
+layers: 4
+global_attention_function: softmax
+global_attention: general
+encoder_type: transformer
+decoder_type: transformer
