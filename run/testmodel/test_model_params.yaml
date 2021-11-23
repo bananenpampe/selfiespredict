@@ -16,3 +16,14 @@ data:
     valid:
         path_src: ../../data/tokenized_data/SELFIE/USPTO_480K/src-val.txt
         path_tgt: ../../data/tokenized_data/SELFIE/USPTO_480K/tgt-val.txt
+
+params:
+  # Training and inference hyperparameters (learning rate, optimizer, beam size, etc.)
+train:
+  # Training specific configuration (checkpoint frequency, number of training step, etc.)
+eval:
+  # Evaluation specific configuration (evaluation frequency, scorers, etc.)
+infer:
+  # Inference specific configuration (output scores, alignments, etc.)
+score:
+  # Scoring specific configuration
