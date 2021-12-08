@@ -6,6 +6,7 @@ from rdkit import Chem
 import os
 import argparse
 import gdown
+import regex as re
 
 def return_canonical(smiles):
     m = Chem.MolFromSmiles(smiles)
@@ -13,6 +14,20 @@ def return_canonical(smiles):
     Chem.SanitizeMol(m,Chem.SanitizeFlags.SANITIZE_FINDRADICALS|Chem.SanitizeFlags.SANITIZE_KEKULIZE|Chem.SanitizeFlags.SANITIZE_SETAROMATICITY|Chem.SanitizeFlags.SANITIZE_SETCONJUGATION|Chem.SanitizeFlags.SANITIZE_SETHYBRIDIZATION|Chem.SanitizeFlags.SANITIZE_SYMMRINGS,catchErrors=True)
     return Chem.MolToSmiles(Chem.MolFromSmiles(smiles))
 
+def selfie_splitter(input_data, brackets):
+        output = [None]*len(input_data)
+        for i in range(len(input_data)):
+            filter_split = list(filter(None, re.split('(\W|\d)',input_data[i])))
+            if not brackets:
+                 filter_split = [item.replace(']','').replace('[','') for item in filter_split]
+            removed_space = [i for i in filter_split if i != ""]
+            
+            if input_data[i] != "".join(removed_space) and brackets==False:
+                  raise ValueError("ValueError exception thrown")
+            
+            string_list = ' '.join(removed_space)
+            output[i] = string_list
+        return output
 
 class Data_Cleaner:
     """ Class for data preparation 'change made in colab2'
@@ -100,7 +115,7 @@ class Data_Cleaner:
         """
         #generate tokenized selfies
         BASEPATH = os.path.dirname(os.path.dirname(os.path.dirname(selfiespredict.__file__)))
-        data_path = os.path.join(BAEPATH,"data/tokenized_data/SELFIE", name)
+        data_path = os.path.join(BASEPATH,"data/tokenized_data/SELFIEwithBrackets", name)
         os.makedirs(data_path, exist_ok=True)
         raw_data_path = os.path.join("./data/raw_data", name)
         text_files = [f for f in os.listdir(raw_data_path) if f.endswith('.txt')]
@@ -108,7 +123,7 @@ class Data_Cleaner:
             data_file = os.path.join(raw_data_path, file)
             self._load_data(data_file)
             self.data2selfie()
-            self.data = [' '.join(list(sf.split_selfies(item))).replace("[", "").replace("]", "") for item in self.data]
+            self.data = [' '.join(list(sf.split_selfies(item))) for item in self.data]
             output_file = os.path.join(data_path, file)
             with open(output_file, "w") as output:
                  for line in self.data:
@@ -127,7 +142,31 @@ class Data_Cleaner:
             with open(output_file, "w") as output:
                  for line in self.data:
                     output.write('%s\n' % line)
-
+    
+    def gen_SMILE_tokenized_SELFIES(self,name, brackets):
+        """
+        Function generates txt file of tokenized SMILES and SELFIES for train/test/val
+        """
+        #generate tokenized selfies
+        BASEPATH = os.path.dirname(os.path.dirname(os.path.dirname(selfiespredict.__file__)))
+        if brackets == True:
+            data_path = os.path.join(BASEPATH,"data/tokenized_data/SMILE_tokenized_SELFIES_withBrackets", name)
+        if brackets == False:
+            data_path = os.path.join(BASEPATH,"data/tokenized_data/SMILE_tokenized_SELFIES_noBrackets", name)
+        os.makedirs(data_path, exist_ok=True)
+        raw_data_path = os.path.join("./data/raw_data", name)
+        text_files = [f for f in os.listdir(raw_data_path) if f.endswith('.txt')]
+        for file in text_files:
+            data_file = os.path.join(raw_data_path, file)
+            self._load_data(data_file)
+            self.data2selfie()
+            self.data = selfie_splitter(self.data, brackets)
+            output_file = os.path.join(data_path, file)
+            with open(output_file, "w") as output:
+                 for line in self.data:
+                    output.write('%s\n' % line)
+   
+    
     def data2smile(self):
         """
         Function that converts list entries to SMILE format
