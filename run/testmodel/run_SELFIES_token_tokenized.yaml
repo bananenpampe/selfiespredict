@@ -11,11 +11,11 @@ share_vocab: true
 # Corpus opts:
 data:
     corpus_1:
-        path_src: ../../data/tokenized_data/SELFIESwithBrackets/USPTO_480k/src-train.txt
-        path_tgt: ../../data/tokenized_data/SELFIESwithBrackets/USPTO_480k/tgt-train.txt
+        path_src: ../../data/tokenized_data/SMILE_tokenized_SELFIES_withBrackets/USPTO_480k/src-train.txt
+        path_tgt: ../../data/tokenized_data/SMILE_tokenized_SELFIES_withBrackets/USPTO_480k/tgt-train.txt
     valid:
-        path_src: ../../data/tokenized_data/SELFIESwithBrackets/USPTO_480k/src-val.txt
-        path_tgt: ../../data/tokenized_data/SELFIESwithBrackets/USPTO_480k/tgt-val.txt
+        path_src: ../../data/tokenized_data/SMILE_tokenized_SELFIES_withBrackets/USPTO_480k/src-val.txt
+        path_tgt: ../../data/tokenized_data/SSMILE_tokenized_SELFIES_withBrackets/USPTO_480k/tgt-val.txt
 
 world_size: 1
 gpu_ranks: [0]
