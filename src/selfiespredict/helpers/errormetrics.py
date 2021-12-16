@@ -20,4 +20,4 @@ def topN_accuracy(n, PATH, TRUE_PATH):
     for index,i in enumerate(zip(grouper(n,lines),lines_true)):
         if i[1] in i[0]:
             indices.append(index)
-    return len(indices)/len(lines_true)
+    return (len(indices)/len(lines_true), indices)
