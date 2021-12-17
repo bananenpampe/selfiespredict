@@ -5,7 +5,7 @@ import selfies as sf
 import numpy as np
 
 def bond_count_difference_rule(mols):
-    return mols[1].GetNumBonds() - mols[0].GetNumBonds()
+    return mols[0][1].GetNumBonds() - mols[1][1].GetNumBonds()
 
 def do_nothing_rule(mols):
     return 0
@@ -31,19 +31,21 @@ def return_feature_mat(PATH_EDUCT,PATH_PRODUCT,PATH_TRANS,rules=[],repr_type="SM
             raise AssertionError("Something went wrong")
 
     with open(PATH_EDUCT,"r") as e, open(PATH_PRODUCT,"r") as p, open(PATH_TRANS,"r") as t:
+
         rule_matrix = return_rule_mat(rules,lengths[0])
 
         for n, lines in enumerate(zip(e,p,t)):
             #print("yo")
+            raw_lines = lines
             lines = [ line.replace(' ', '').rstrip("\n") for line in lines]
 
             if repr_type == "SMILES":
 
                 representations = []
 
-                for smiles in lines:
+                for smiles in zip(raw_lines[:2],lines[:2]):
                     try:
-                        representations.append(Chem.MolFromSmiles(smiles))
+                        representations.append((smiles[0],Chem.MolFromSmiles(smiles[1])))
                     except:
                         representations.append("NOTVALID")
                         print("smiles not valid")
@@ -52,9 +54,9 @@ def return_feature_mat(PATH_EDUCT,PATH_PRODUCT,PATH_TRANS,rules=[],repr_type="SM
 
                 representations = []
 
-                for selfies_repr in lines[:2]:
+                for selfies_repr in zip(raw_lines[:2],lines[:2]):
                     try:
-                        representations.append(Chem.MolFromSmiles(sf.decoder(selfies_repr)))
+                        representations.append((selfies_repr[0],Chem.MolFromSmiles(sf.decoder(selfies_repr[1]))))
                     except:
                         representations.append("NOTVALID")
 
