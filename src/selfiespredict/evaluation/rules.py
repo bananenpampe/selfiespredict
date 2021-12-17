@@ -3,6 +3,8 @@ from rdkit import RDLogger
 RDLogger.DisableLog('rdApp.*')
 import selfies as sf
 import numpy as np
+from rdkit.Chem import rdMolDescriptors
+from selfiespredict.helpers.Helper_functions import*
 
 def bond_count_difference_rule(mols):
     return mols[1].GetNumBonds() - mols[0].GetNumBonds()
@@ -11,8 +13,13 @@ def do_nothing_rule(mols):
     return 0
 
 def return_rule_mat(rules,n_samples):
-    return np.zeros((n_samples,len(rules)+2))
+    return np.zeros((n_samples,len(rules)+6))
 
+def heteratom_reactants(mols):
+   return rdMolDescriptors.CalcNumHeteroatoms(mols[0])
+
+def number_atoms_product(mols):
+  return mols[1].GetNumAtoms()
 
 def return_feature_mat(PATH_EDUCT,PATH_PRODUCT,PATH_TRANS,rules=[],repr_type="SMILES"):
 
@@ -34,7 +41,7 @@ def return_feature_mat(PATH_EDUCT,PATH_PRODUCT,PATH_TRANS,rules=[],repr_type="SM
         rule_matrix = return_rule_mat(rules,lengths[0])
 
         for n, lines in enumerate(zip(e,p,t)):
-            #print("yo")
+
             lines = [ line.replace(' ', '').rstrip("\n") for line in lines]
 
             if repr_type == "SMILES":
@@ -65,8 +72,27 @@ def return_feature_mat(PATH_EDUCT,PATH_PRODUCT,PATH_TRANS,rules=[],repr_type="SM
             else:
                 rule_matrix[n][1] = 0
 
+            if repr_type == "SMILES":
+                tokenized_smiles_reactant = smi_tokenizer(lines[0])
+                tokens_smiles_reactant = tokenized_smiles_reactant.count(" ")
+                rule_matrix[n][2] = tokens_smiles_reactant+1
+
+                tokenized_smiles_product = smi_tokenizer(lines[1])
+                tokens_smiles_product = tokenized_smiles_product.count(" ")
+                rule_matrix[n][3] = tokens_smiles_product+1
+
+                selfies_reactant = sf.encoder(lines[0])
+                tokenized_selfies_reactant  =  " ".join(list(sf.split_selfies(selfies_reactant)))
+                tokens_selfies_reactant = tokenized_selfies_reactant.count(" ")
+                rule_matrix[n][4] = tokens_selfies_reactant+1
+
+                selfies_product = sf.encoder(lines[1])
+                tokenized_selfies_product = " ".join(list(sf.split_selfies(selfies_product)))
+                tokens_selfies_product = tokenized_selfies_product.count(" ")
+                rule_matrix[n][5] = tokens_selfies_product+1
+
             for j,rule in enumerate(rules):
-                rule_matrix[n][j+2] = rule(representations)
+                rule_matrix[n][j+6] = rule(representations)
 
     return rule_matrix
 
