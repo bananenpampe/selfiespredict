@@ -2,9 +2,14 @@ import unittest
 from rdkit import Chem
 
 def return_canonical(smiles):
+    """Returns canonical SMILES
+    """
     return Chem.MolToSmiles(Chem.MolFromSmiles(smiles))
 
 class TestCanonicalDemo(unittest.TestCase):
+    """Test that is both expected to pass and show correct behaviour of RDKit
+    and the of the unittest framework
+    """
     def test_equivalent(self):
         """Is c1ccccc1 rdkit canonical"""
         benzene_smiles_can = "c1ccccc1"

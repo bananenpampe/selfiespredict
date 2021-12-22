@@ -1,6 +1,9 @@
 import itertools
 
 def grouper(n, iterable):
+    """Generator that yields chunks of size n of an iterable.
+    Returns None if length of iterable can not be divided by n
+    """
     it = iter(iterable)
     while True:
         chunk = tuple(itertools.islice(it, n))
@@ -9,7 +12,8 @@ def grouper(n, iterable):
         yield chunk
 
 def topN_accuracy(n, PATH, TRUE_PATH):
-    """Helper function that returns top n accuracy
+    """Helper function that returns top n accuracy of reaction predictions.
+       PATH and TRUE_PATH
     """
     with open(PATH) as f, open(TRUE_PATH,'r') as g:
         lines = f.read().splitlines()

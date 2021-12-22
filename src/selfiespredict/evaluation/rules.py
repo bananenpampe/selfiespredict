@@ -7,6 +7,11 @@ from rdkit.Chem import rdMolDescriptors
 from selfiespredict.helpers.Helper_functions import*
 
 def bond_count_difference_rule(mols):
+    """rule that acts on [(Representation_educt, rdkit.Chem.rdchem.Mol) \\
+                          (Representation_PRODUCT, rdkit.Chem.rdchem.Mol)] list
+
+       returns difference of bonds in products and educts
+    """
     return mols[0][1].GetNumBonds() - mols[1][1].GetNumBonds()
 
 def do_nothing_rule(mols):
@@ -16,12 +21,22 @@ def return_rule_mat(rules,n_samples):
     return np.zeros((n_samples,len(rules)+6))
 
 def heteratom_reactants(mols):
+    """rule that acts on (Representation_educt, rdkit.Chem.rdchem.Mol) tuple
+
+       returns number of heteroatoms in structure
+    """
    return rdMolDescriptors.CalcNumHeteroatoms(mols[0])
 
 def number_atoms_product(mols):
+    """rule that acts on (Representation_educt, rdkit.Chem.rdchem.Mol) tuple
+
+       returns number of atoms in structure
+    """
   return mols[1].GetNumAtoms()
 
 def return_feature_mat(PATH_EDUCT,PATH_PRODUCT,PATH_TRANS,rules=[],repr_type="SMILES"):
+    """ Function that analyizes 
+    """
 
     sf.set_semantic_constraints("hypervalent")
     constraints = sf.get_semantic_constraints()

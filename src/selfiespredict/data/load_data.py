@@ -9,22 +9,29 @@ import gdown
 import regex as re
 
 def return_canonical(smiles):
+    """Helper function that returns canolicalized SMILES with extended valency
+    Depreciated as new RDKit version can handle valencies.
+    """
     m = Chem.MolFromSmiles(smiles)
     m.UpdatePropertyCache(strict=False)
     Chem.SanitizeMol(m,Chem.SanitizeFlags.SANITIZE_FINDRADICALS|Chem.SanitizeFlags.SANITIZE_KEKULIZE|Chem.SanitizeFlags.SANITIZE_SETAROMATICITY|Chem.SanitizeFlags.SANITIZE_SETCONJUGATION|Chem.SanitizeFlags.SANITIZE_SETHYBRIDIZATION|Chem.SanitizeFlags.SANITIZE_SYMMRINGS,catchErrors=True)
     return Chem.MolToSmiles(Chem.MolFromSmiles(smiles))
 
 def selfie_splitter(input_data, brackets):
+        """Helper function that splits (tokenizes) a list of SELFIES reaction smiles
+        rule: "[Na+]" -> "[ Na + ]" if brackets
+              "[Na+]" -> "Na +" if not brackets
+        """
         output = [None]*len(input_data)
         for i in range(len(input_data)):
             filter_split = list(filter(None, re.split('(\W|\d)',input_data[i])))
             if not brackets:
                  filter_split = [item.replace(']','').replace('[','') for item in filter_split]
             removed_space = [i for i in filter_split if i != ""]
-            
+
             if input_data[i] != "".join(removed_space) and brackets==False:
                   raise ValueError("ValueError exception thrown")
-            
+
             string_list = ' '.join(removed_space)
             output[i] = string_list
         return output
@@ -50,7 +57,9 @@ class Data_Cleaner:
         self.raw_data = list_of_lists
 
     def __init__(self, DATAPATH=None, selfies_constraints=None):
-
+        """Initializes Data_cleaner class.
+           sets extended SELFIES constraints to deal with hypervalency
+        """
         #adding selfies hypervalence constraints:
 
         if selfies_constraints is None:
@@ -142,7 +151,7 @@ class Data_Cleaner:
             with open(output_file, "w") as output:
                  for line in self.data:
                     output.write('%s\n' % line)
-    
+
     def gen_SMILE_tokenized_SELFIES(self,name, brackets):
         """
         Function generates txt file of tokenized SMILES and SELFIES for train/test/val
@@ -165,8 +174,8 @@ class Data_Cleaner:
             with open(output_file, "w") as output:
                  for line in self.data:
                     output.write('%s\n' % line)
-   
-    
+
+
     def data2smile(self):
         """
         Function that converts list entries to SMILE format
@@ -202,7 +211,9 @@ class Data_Cleaner:
             print("Data in wrong state")
 
     def tokenize_selfie(self):
-
+        """Function that tokenizes SELFIES
+           Rule: [Na+][C-] -> Na+ C-
+        """
         if self.data_state == "SELFIE":
             self.data = [' '.join(list(sf.split_selfies(item))).replace("[", "").replace("]", "") for item in self.data]
             self.data_state = "tokenized SELFIE"
