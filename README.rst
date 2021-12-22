@@ -61,7 +61,7 @@ Install notes
 
      git clone <link>
      cd <./cloned_repository>
-     pip install -e .
+     pip install -e . --user
      
 * On Windows, the rdkit wheel might not work and git/setuptools might not be installed, for that we recommend to normal rdkit-install::
      
@@ -72,7 +72,7 @@ Install notes
 
 * And then install into the environment::
         
-        pip install -e .         
+        pip install -e . --user        
   
 * It might be possible that the setup file has to be run seperately. Due to the limited time of the project, we were not able to identify why this is nescessary on google colab.::
 
