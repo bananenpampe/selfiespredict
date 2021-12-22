@@ -51,7 +51,7 @@ Example
 
 .. image:: reaction_prediction.png
    :width: 600
-
+   :align: center
 Install notes
 =============
 
