@@ -49,7 +49,7 @@ In transformer based chemical reaction prediction, the prediction problem is tre
 Example
 =======
 
-.. image:: images/get_started_sphinx.png
+.. image:: reaction_prediction.png
    :width: 600
 
 Install notes
