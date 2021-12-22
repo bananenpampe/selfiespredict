@@ -33,8 +33,13 @@ SelfiesPredict
 ==============
 
 
-    Reaction outcome prediction using SELFIES
+    Reaction outcome prediction using SELFIES 
 
+
+This Repository containes our work for the project 2 of the EPFL course CS433 in machinelearning.
+We carried this project out as part of the ML4Science initiative, that allows students to join a research lab and work on a practical ML problem.
+
+`CNN <http://cnn.com>`_
 
 Reaction outcome prediction has been done with these models, using SMILES
 
