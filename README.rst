@@ -68,7 +68,9 @@ Example
 
 *
 
-
+.. image:: reaction_prediction_filled_out.png
+   :width: 1050
+   :align: center
 
 
 
