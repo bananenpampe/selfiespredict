@@ -43,7 +43,7 @@ This problem was kindly provided by `Philippe Schwaller <https://pschwllr.github
 In this work, we have retrained a transformer based model for chemical reaction prediction using string-based molecular representations.
 We compaire the established SMILES representation with the recently developped `SELFIES <https://github.com/aspuru-guzik-group/selfies>`_ representation, that performs well in generative models.
 
-In transformer based chemical reaction prediction, the prediction problem is threated as a NLP translation task, where the input or educts are treated as the language that is to be translated, and the reaction products are the desired translations.
+In transformer based chemical reaction prediction, the prediction problem is treated as a NLP translation task, where the input or educts are treated as the language that is to be translated, and the reaction products are the desired translations.
 
 
 
