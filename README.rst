@@ -38,10 +38,12 @@ SelfiesPredict
 
 This Repository containes our work for the project 2 of the EPFL course CS433 in machinelearning.
 We carried this project out as part of the ML4Science initiative, that allows students to join a research lab and work on a practical ML problem.
+This problem was kindly provided by `Philippe Schwaller <https://pschwllr.github.io/#>`_ who also advised us over the course of the project.
 
-`CNN <http://cnn.com>`_
+In this work, we have retrained a transformer based model for chemical reaction prediction using string-based molecular representations.
+We compaire the established SMILES representation with the recently developped `SELFIES <https://github.com/aspuru-guzik-group/selfies>` representation, that performs well in generative models.
 
-Reaction outcome prediction has been done with these models, using SMILES
+In transformer based chemical reaction prediction, the prediction problem is threated as a NLP translation task, where the input or educts are threated as the language that is to be translated, and the reaction products are the desired translations.
 
 
 
