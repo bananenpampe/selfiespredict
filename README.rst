@@ -67,7 +67,7 @@ Example
 
 
 * The predicted outcome confirms what a trained chemist can derive: The educts have undergone a nucleophilic substitution reaction.
-  The by- product of the reaction, hydrochloric acid, is not predicted by the model as it only is trained on predicting the main product. 
+  The by- product of the reaction, hydrochloric acid (H-Cl), is not predicted by the model as it only is trained on predicting the main product. 
 
 .. image:: reaction_prediction_filled_out.png
    :width: 1050
