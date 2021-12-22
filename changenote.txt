@@ -1,5 +1,0 @@
-can we store data as tuple (data, "string repr type")
-instead of raw, data
-
-
-what about other metallocenes with valence 12 e.g.
