@@ -1,0 +1,30 @@
+# test_model_params.yaml
+
+## Where the samples will be written
+save_data: ./run2/example
+## Where the vocab(s) will be written, should point to same in shared embeddings
+src_vocab: ./run2/example.vocab.src
+tgt_vocab: ./run2/example.vocab.src
+# Prevent overwriting existing files in the folder
+overwrite: true
+share_vocab: true
+# Corpus opts:
+data:
+    corpus_1:
+        path_src: ../data/tokenized_data/SMILES/USPTO_480k/src-train.txt
+        path_tgt: ../data/tokenized_data/SMILES/USPTO_480k/tgt-train.txt
+    valid:
+        path_src: ../data/tokenized_data/SMILES/USPTO_480k/src-val.txt
+        path_tgt: ../data/tokenized_data/SMILES/USPTO_480k/tgt-val.txt
+
+world_size: 1
+gpu_ranks: [0]
+
+tensorboard: true
+tensorboard_log_dir: log_dir
+save_model: ./run2/model
+save_checkpoint_steps: 5000
+train_steps: 250000
+# Model and optimization parameters.
+#param_init 0 depreceated? why dontknow
+#check out https://opennmt.net/OpenNMT-tf/v2_transition.html?highlight=param_init
