@@ -46,6 +46,11 @@ We compaire the established SMILES representation with the recently developped `
 In transformer based chemical reaction prediction, the prediction problem is treated as a NLP translation task, where the input or educts are treated as the language that is to be translated, and the reaction products are the desired translations.
 
 
+Repository structure
+====================
+
+The repository is structured
+
 Example
 =======
 
