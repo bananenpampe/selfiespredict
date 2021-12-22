@@ -73,7 +73,7 @@ Install notes
 
 Tests
 ====
-* To run test, run in the directory::
+* To run test, run in the selfies directory::
 
    python -m unittest
 
