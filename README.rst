@@ -51,6 +51,11 @@ Repository structure
 
 The repository is structured into subdirectories containing raw data utilised for training models :code:`/raw_data`, all pretrained models mentioned in the report :code:`/pretrained_models`, reactant translation results on the validation set :code:`/results`, config files for onmt models :code:`/run`, utilised functions :code:`/src/selfiespredict`. A example notebook for generating data, training a model and evaluating predictions is included at the root :code:`Tokenize_Train_Evaluate.ipynb`. The report and figures are included in :code:`/report`.
 
+Functions
+====================
+
+Functions are split into data (/src/selfiespredict/data), evaluation (/src/selfiespredict/evaluation) and helpers (/src/selfiespredict/helpers). The data_load file in /src/selfiespredict/data contains the data_loader class for downloading raw data (import_data) and generating the tokenized data we used for our models. It also includes functions for converting the string representations into eachother and for tokenization. The errormetrics file in /src/selfiespredict/helpers yields the top1 or top5 accuracy used for evaluating the models. The Helper_Functions file in /src/selfiespredict/helpers contains the SMILES tokenizer.
+
 Example
 =======
 
