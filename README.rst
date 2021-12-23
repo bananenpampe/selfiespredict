@@ -67,10 +67,10 @@ Example
 
 * The reaction prediction problem that was introduced in the report (fig.1) can be solved with the pretrained SMILES model that we have included in the repository::
 
-     onmt_translate -model ./pretrained_models/SMILES_250K_pretrained.pt \ 
-     --src ./data/tokenized_data/SMILES/USPTO_480k/src-val.txt \
-     --output predicted_reaction_outcome.txt \ 
-     --n_best 1 --beam_size 5 --max_length 3000 --batch_size 100
+     onmt_translate -model ./pretrained_models/SMILES_250K_pretrained.pt \
+     --src ./data/tokenized_data/USPTO_480k/SMILES/src-val.txt \
+     --output predicted_reaction_outcome.txt \
+     --n_best 1 --beam_size 5 --max_length 3000 --batch_size 1
 
 
 * The predicted outcome confirms what a trained chemist can derive: The educts have undergone a nucleophilic substitution reaction.
