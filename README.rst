@@ -60,9 +60,9 @@ Example
 
 * The reaction prediction problem that was introduced in the report (fig.1) can be solved with the pretrained SMILES model that we have included in the repository::
 
-     onmt_translate -model /content/drive/.shortcut-targets-by-id/10d3SMUTvMwD11aKRQ_8_IM2nTFCIo0ue/run/model_step_{}.pt \ 
-     --src /content/drive/MyDrive/github/selfiespredict/data/tokenized_data/SMILES/USPTO_480k/src-val.txt \
-     --output /content/drive/MyDrive/github/selfiespredict/run/run_tim/predictions_smiles_{}.txt \ 
+     onmt_translate -model ./pretrained_models/SMILES_250K_pretrained.pt \ 
+     --src ./data/tokenized_data/SMILES/USPTO_480k/src-val.txt \
+     --output predicted_reaction_outcome.txt \ 
      --n_best 1 --beam_size 5 --max_length 3000 --batch_size 100
 
 
