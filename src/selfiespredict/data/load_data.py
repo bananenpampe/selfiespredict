@@ -191,13 +191,13 @@ class Data_Cleaner:
             data_file = os.path.join(raw_data_path, file)
             self._load_data(data_file)
             self.data2selfie()
-            SELFIE_Data = [' '.join(list(sf.split_selfies(item))) for item in self.data]
+            SELFIE_Data = [' '.join(list(sf.split_selfies(item))).replace("[","(").replace("]",")") for item in self.data]
             self._load_data(data_file)
             self.data2smile()
             SMILES_Data = self.data
-            output_data = [None]*len(SELFIES_Data)
+            output_data = [None]*len(SELFIE_Data)
             for idx, item in enumerate(SMILES_Data):
-                output_data[idx] = SMILES_Data[idx] + " | " + SELFIES_data[idx]
+                output_data[idx] = SMILES_Data[idx] + " | " + SELFIE_Data[idx]
             output_file = os.path.join(data_path, file)
             with open(output_file, "w") as output:
                  for line in output_data:
