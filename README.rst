@@ -49,7 +49,7 @@ In transformer based chemical reaction prediction, the prediction problem is tre
 Repository structure
 ====================
 
-The repository is structured into subdirectories containing raw data utilised for training models :code:`/raw_data`, all pretrained models mentioned in the report :code:`/pretrained_models`, reactant translation results on the validation set :code:`/results`, config files for onmt models :code:`/run`, utilised functions :code:`/src/selfiespredict`. A example notebook for generating data, training a model and evaluating predictions is included :code:`Tokenize_Train_Evaluate.ipynb`.
+The repository is structured into subdirectories containing raw data utilised for training models :code:`/raw_data`, all pretrained models mentioned in the report :code:`/pretrained_models`, reactant translation results on the validation set :code:`/results`, config files for onmt models :code:`/run`, utilised functions :code:`/src/selfiespredict`. A example notebook for generating data, training a model and evaluating predictions is included at the root :code:`Tokenize_Train_Evaluate.ipynb`. The report and figures are included in :code:`/report`.
 
 Example
 =======
@@ -109,7 +109,7 @@ Install notes
 
 Tests
 ====
-* To run the tests, run in the selfies directory. This may take a while.::
+* To run the tests, run in the selfies directory. This may take a while::
 
    python -m unittest
 
