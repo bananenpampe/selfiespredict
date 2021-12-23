@@ -122,7 +122,7 @@ Tests
 
 Citations
 ========
-*The model is based on the Carbohydrate Transformer and the ONMT-py translation tool to properly cite the two, please include::
+* The model is based on the Carbohydrate Transformer and the ONMT-py translation tool to properly cite the two, please include::
 
    @article{pesciullesi2020transfer,
      title={Transfer learning enables the molecular transformer to predict regio-and stereoselective reactions on carbohydrates},
