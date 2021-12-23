@@ -154,14 +154,14 @@ class Data_Cleaner:
 
     def gen_SMILE_tokenized_SELFIES(self,name, brackets):
         """
-        Function generates txt file of tokenized SMILES and SELFIES for train/test/val
+        Function generates txt file of further tokenized SELFIES for train/test/val
         """
         #generate tokenized selfies
         BASEPATH = os.path.dirname(os.path.dirname(os.path.dirname(selfiespredict.__file__)))
         if brackets == True:
-            data_path = os.path.join(BASEPATH,"data/tokenized_data/SMILE_tokenized_SELFIES_withBrackets", name)
+            data_path = os.path.join(BASEPATH,"./data/tokenized_data/SMILE_tokenized_SELFIES_withBrackets", name)
         if brackets == False:
-            data_path = os.path.join(BASEPATH,"data/tokenized_data/SMILE_tokenized_SELFIES_noBrackets", name)
+            data_path = os.path.join(BASEPATH,"./data/tokenized_data/SMILE_tokenized_SELFIES_noBrackets", name)
         os.makedirs(data_path, exist_ok=True)
         raw_data_path = os.path.join("./data/raw_data", name)
         text_files = [f for f in os.listdir(raw_data_path) if f.endswith('.txt')]
@@ -175,7 +175,34 @@ class Data_Cleaner:
                  for line in self.data:
                     output.write('%s\n' % line)
 
-
+    
+    def gen_SELFIEandSMILES(self,name): 
+        """
+        Function generates txt file of combined tokenized SMILES and SELFIES for train/test/val
+        """
+        
+        #generate tokenized selfies
+        BASEPATH = os.path.dirname(os.path.dirname(os.path.dirname(selfiespredict.__file__)))
+        data_path = os.path.join(BASEPATH,"./data/tokenized_data/SELFIEandSMILES", name)
+        os.makedirs(data_path, exist_ok=True)
+        raw_data_path = os.path.join("./data/raw_data", name)
+        text_files = [f for f in os.listdir(raw_data_path) if f.endswith('.txt')]
+        for file in text_files:
+            data_file = os.path.join(raw_data_path, file)
+            self._load_data(data_file)
+            self.data2selfie()
+            SELFIE_Data = [' '.join(list(sf.split_selfies(item))) for item in self.data]
+            self._load_data(data_file)
+            self.data2smile()
+            SMILES_Data = self.data
+            output_data = [None]*len(SELFIES_Data)
+            for idx, item in enumerate(SMILES_Data):
+                output_data[idx] = SMILES_Data[idx] + " | " + SELFIES_data[idx]
+            output_file = os.path.join(data_path, file)
+            with open(output_file, "w") as output:
+                 for line in output_data:
+                    output.write('%s\n' % line)
+    
     def data2smile(self):
         """
         Function that converts list entries to SMILE format
