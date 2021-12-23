@@ -120,4 +120,31 @@ Tests
 
    python -m unittest
 
+Citations
+========
+*The model is based on the Carbohydrate Transformer and the ONMT-py translation tool to properly cite the two, please include::
+
+   @article{pesciullesi2020transfer,
+     title={Transfer learning enables the molecular transformer to predict regio-and stereoselective reactions on carbohydrates},
+     author={Pesciullesi, Giorgio and Schwaller, Philippe and Laino, Teodoro and Reymond, Jean-Louis},
+     journal={Nature Communications},
+     volume={11},
+     number={1},
+     pages={1--8},
+     year={2020},
+     publisher={Nature Publishing Group}
+   }
+
+   @inproceedings{opennmt,
+     author    = {Guillaume Klein and
+                  Yoon Kim and
+                  Yuntian Deng and
+                  Jean Senellart and
+                  Alexander M. Rush},
+     title     = {Open{NMT}: Open-Source Toolkit for Neural Machine Translation},
+     booktitle = {Proc. ACL},
+     year      = {2017},
+     url       = {https://doi.org/10.18653/v1/P17-4012},
+     doi       = {10.18653/v1/P17-4012}
+   }
 
