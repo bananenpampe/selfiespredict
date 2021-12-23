@@ -49,7 +49,7 @@ In transformer based chemical reaction prediction, the prediction problem is tre
 Repository structure
 ====================
 
-The repository is structured
+The repository is structured into subdirectories containing raw data utilised for training models (/raw_data), all pretrained models mentioned in the report (/pretrained_models), reactant translation results on the validation set (/results), config files for onmt models (/run), utilised functions (/src/selfiespredict). A example notebook for generating data, training a model and evaluating predictions is included (Tokenize_Train_Evaluate.ipynb).
 
 Example
 =======
