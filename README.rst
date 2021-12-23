@@ -54,7 +54,7 @@ The repository is structured into subdirectories containing raw data utilised fo
 Functions
 ====================
 
-Functions are split into data (/src/selfiespredict/data), evaluation (/src/selfiespredict/evaluation) and helpers (/src/selfiespredict/helpers). The data_load file in /src/selfiespredict/data contains the data_loader class for downloading raw data (import_data) and generating the tokenized data we used for our models. It also includes functions for converting the string representations into eachother and for tokenization. The errormetrics file in /src/selfiespredict/helpers yields the top1 or top5 accuracy used for evaluating the models. The Helper_Functions file in /src/selfiespredict/helpers contains the SMILES tokenizer.
+Functions are split into data (:code: ´/src/selfiespredict/data´), evaluation (/src/selfiespredict/evaluation) and helpers (/src/selfiespredict/helpers). The data_load file in /src/selfiespredict/data contains the data_loader class for downloading raw data (import_data) and generating the tokenized data we used for our models. It also includes functions for converting the string representations into eachother and for tokenization. The errormetrics file in /src/selfiespredict/helpers yields the top1 or top5 accuracy used for evaluating the models. The Helper_Functions file in /src/selfiespredict/helpers contains the SMILES tokenizer.
 
 Example
 =======
