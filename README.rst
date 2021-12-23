@@ -97,8 +97,7 @@ Install notes
      cd <./cloned_repository>
      pip install . --user
      
-* On Windows, the rdkit wheel might not work and git/setuptools might not be installed, for that we recommend the recommended rdkit-install.
-   If git is not installed on windows, an unclear "missing setuptools" error is thrown::
+* On Windows, the rdkit wheel might not work and git/setuptools might not be installed, for that we recommend the rdkit-install that is proposed by the rdkit developpers. If git is not installed on windows, an unclear "missing setuptools" error is thrown::
      
      conda activate selfies_project
      #make sure to uninstall the not-working pypi wheel
