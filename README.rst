@@ -101,7 +101,7 @@ Install notes
         
         pip install -e . --user        
   
-* It might be possible that the setup file has to be run seperately. Due to the limited time of the project, we were not able to identify why this is nescessary on google colab.::
+* It might be possible that the setup file has to be run seperately. Due to the limited time of the project, we were not able to identify why this is nescessary on google colab::
 
         python setup.py install
 
