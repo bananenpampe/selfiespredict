@@ -1,5 +1,0 @@
-pretrained_models/SELFIES_250K_pretrained.pt filter=lfs diff=lfs merge=lfs -text
-pretrained_models/SMILES_250K_pretrained.pt filter=lfs diff=lfs merge=lfs -text
-pretrained_models/SELFIES_SMILES_250K_augmented.pt filter=lfs diff=lfs merge=lfs -text
-pretrained_models/SELFIES_2_250K_pretrained.pt filter=lfs diff=lfs merge=lfs -text
-pretrained_models/SELFIES_3_250K_pretrained.pt filter=lfs diff=lfs merge=lfs -text
